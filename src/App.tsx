@@ -1,5 +1,5 @@
-import { EntityCard } from "./components/EntityCard"
-import { EntityForm } from "./components/EntityForm"
+import { ToiletCard as ToiletCrad } from "./components/ToiletCard"
+import { ToiletForm } from "./components/ToiletForm"
 import "./App.css"
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
             </header>
 
             <aside>
-                <EntityForm />
+                <ToiletForm />
             </aside>
 
             <main>
@@ -19,7 +19,7 @@ export default function App() {
                 <p className="hint">Загрузка…</p>
                 <p className="hint">Добавьте сущность</p>
                 <div className="grid">
-                    <EntityCard />
+                    <ToiletCrad />
                 </div>
             </main>
         </div>

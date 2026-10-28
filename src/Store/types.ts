@@ -1,25 +1,45 @@
-export interface Root {
-  data: Daum[]
-  meta: Meta
+export interface IStrapiResponse<T> {
+  data: T
+  meta?: Meta
 }
 
-export interface Daum {
+export interface  IToilet{
   id: number
   documentId: string
   createdAt: string
   updatedAt: string
   publishedAt: string
   Name: string
-  Price: string
-  DateCreate: string
-  Description?: string
-  Material: string
-  Category: string
-  Rating?: string
-  Media?: Media
+  Price: number
+  DateCreate: "2020-06-08"
+  Description?: string 
+  Material: ToiletMaterial
+  Category: ToiletCategory
+  Rating?: number
+  Media?: IMedia
 }
 
-export interface Media {
+export type TToiletInput = Omit<IToilet, 'id' | 'documentId' | 'Media' | 'createdAt' | 'updatedAt' | 'publishedAt'>
+
+export const MATERIALS = ["ceramic", "porcelain", "plastic"] as const
+export type ToiletMaterial = (typeof MATERIALS) [number]
+
+export const MATERIAL_LABELS: Record<ToiletMaterial, string> = {
+    ceramic: "Керамика",
+    porcelain: "Фарфор",
+    plastic: "Пластик"
+}
+
+export const CATEGORIES = ["floor", "wall", "smart"] as const
+export type ToiletCategory = (typeof CATEGORIES)[number]
+
+export const CATEGORY_LABELS: Record<ToiletCategory, string> = {
+    floor: "Наполный",
+    wall: "Подвесной",
+    smart: "Компактный",
+}
+
+export interface IMedia {
   id: number
   documentId: string
   name: string
@@ -43,52 +63,13 @@ export interface Media {
 }
 
 export interface Formats {
-  large: Large
-  small: Small
-  medium: Medium
-  thumbnail: Thumbnail
+  large: IMediaFormat
+  small: IMediaFormat
+  medium: IMediaFormat
+  thumbnail: IMediaFormat
 }
 
-export interface Large {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: any
-  size: number
-  width: number
-  height: number
-  sizeInBytes: number
-}
-
-export interface Small {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: any
-  size: number
-  width: number
-  height: number
-  sizeInBytes: number
-}
-
-export interface Medium {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: any
-  size: number
-  width: number
-  height: number
-  sizeInBytes: number
-}
-
-export interface Thumbnail {
+export interface IMediaFormat {
   ext: string
   url: string
   hash: string

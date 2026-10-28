@@ -1,4 +1,4 @@
-export function EntityCard() {
+export function ToiletCard() {
     return (
         <article className="card">
             <div className="card__cover">
